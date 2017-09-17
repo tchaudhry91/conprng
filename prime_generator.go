@@ -15,7 +15,7 @@ func filter(in, out chan int, prime int) {
 	}
 }
 
-func generatePrimes(num int) []int {
+func GeneratePrimes(num int) []int {
 	inChan := make(chan int)
 	primes := make([]int, 0, num)
 	go generate(inChan)
