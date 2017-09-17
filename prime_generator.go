@@ -1,9 +1,5 @@
 package conprng
 
-import (
-	"fmt"
-)
-
 func generate(ch chan int) {
 	for i := 2; ; i++ {
 		ch <- i
