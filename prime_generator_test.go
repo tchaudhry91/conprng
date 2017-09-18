@@ -1,6 +1,7 @@
 package conprng
 
 import (
+	"runtime"
 	"sort"
 	"testing"
 )
@@ -53,5 +54,21 @@ func TestCompositeAbsence100(t *testing.T) {
 			t.Logf("Found %d", num)
 			t.Fail()
 		}
+	}
+}
+
+func BenchmarkCoresQuarter(b *testing.B) {
+	runtime.GOMAXPROCS(runtime.NumCPU() / 4)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		GeneratePrimes(10000)
+	}
+}
+
+func BenchmarkCoresFull(b *testing.B) {
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		GeneratePrimes(10000)
 	}
 }
