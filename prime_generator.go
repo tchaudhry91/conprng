@@ -15,6 +15,7 @@ func filter(in, out chan int, prime int) {
 	}
 }
 
+// GeneratePrimes returns n primes starting with 2 in ascending order, taking n as an argument
 func GeneratePrimes(num int) []int {
 	inChan := make(chan int)
 	primes := make([]int, 0, num)
